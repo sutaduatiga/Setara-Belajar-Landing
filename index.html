@@ -6,7 +6,7 @@
   <title>Setara Belajar — Cukup Mengajar!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700;900&family=League+Spartan:wght@700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,7 +19,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Page shell ── */
     .page {
       min-height: 100vh;
       background: #ffffff;
@@ -29,7 +28,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Grid decoration ── */
     .grid-bg {
       position: absolute;
       top: 0; left: 0;
@@ -44,7 +42,6 @@
       pointer-events: none;
     }
 
-    /* ── Landing layout ── */
     .landing {
       position: relative;
       z-index: 1;
@@ -56,7 +53,6 @@
     }
     @media (min-width: 768px) { .landing { padding: 4rem; } }
 
-    /* ── Nav updated for logo ── */
     nav { 
       display: flex; 
       justify-content: space-between; 
@@ -65,7 +61,7 @@
     }
     
     .logo-container svg {
-      height: 48px; 
+      height: 65px; 
       width: auto;
       display: block;
     }
@@ -82,7 +78,6 @@
     }
     nav button:hover { color: #000; }
 
-    /* ── Hero ── */
     main {
       flex: 1;
       display: flex;
@@ -111,7 +106,6 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ── CTA ── */
     .cta-link {
       display: inline-block;
       background: #0d9488;
@@ -128,7 +122,6 @@
     .cta-main { display: block; font-size: 1rem; font-weight: 600; }
     .cta-sub  { display: block; font-size: 0.625rem; opacity: 0.8; font-weight: 300; margin-top: 0.2rem; }
 
-    /* ── Footer ── */
     .footer-wrap { width: 100%; display: flex; flex-direction: column; gap: 1.5rem; }
     footer { max-width: 72rem; margin: 0 auto; width: 100%; }
     .footer-inner { border-top: 1px solid #f3f4f6; padding-top: 1.8rem; }
@@ -163,7 +156,6 @@
     }
     .feedback-btn:hover { color: #0d9488; }
 
-    /* ── Coming soon overlay ── */
     .coming-soon {
       display: none;
       position: fixed; inset: 0;
@@ -215,11 +207,12 @@
   <div class="landing">
     <nav>
       <div class="logo-container">
-        <svg width="180" height="60" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg">
-          <rect x="155" y="15" width="45" height="18" rx="4" fill="#0D9488"/>
-          <rect x="165" y="38" width="35" height="18" rx="4" fill="#FACC15"/>
-          <text x="0" y="32" font-family="Figtree, sans-serif" font-weight="900" font-size="32" fill="#3D4A5E">setara</text>
-          <text x="0" y="65" font-family="Figtree, sans-serif" font-weight="900" font-size="32" fill="#3D4A5E">belajar</text>
+        <svg width="240" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="35" font-family="'League Spartan', sans-serif" font-weight="900" font-size="34" fill="#3D4A5E">setara</text>
+          <text x="0" y="72" font-family="'League Spartan', sans-serif" font-weight="900" font-size="34" fill="#3D4A5E">belajar</text>
+          
+          <rect x="110" y="5" width="55" height="18" rx="4" fill="#0D9488" />
+          <rect x="120" y="28" width="45" height="18" rx="4" fill="#FACC15" />
         </svg>
       </div>
       <button onclick="alert('Fitur riwayat akan segera hadir!')">Dokumen Saya</button>
