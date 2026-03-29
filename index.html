@@ -1,302 +1,267 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setara Belajar — Cukup Mengajar!</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700;900&family=League+Spartan:wght@700;900&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setara Belajar - Asisten Modul Ajar Kurikulum Merdeka</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=League+Spartan:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      height: 100%;
-      font-family: "Figtree", ui-sans-serif, system-ui, sans-serif;
-      background: #ffffff;
-      color: #1e293b;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+    :root {
+      --primary: #0D9488;
+      --primary-hover: #0b7b73;
+      --secondary: #F0FDF4;
+      --text-dark: #334155;
+      --text-light: #64748b;
+      --white: #FFFFFF;
     }
 
-    .page {
-      min-height: 100vh;
-      background: #ffffff;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    .grid-bg {
-      position: absolute;
-      top: 0; left: 0;
-      width: 400px; height: 400px;
-      background-image:
-        linear-gradient(to right, #e5e7eb 1px, transparent 1px),
-        linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
-      background-size: 40px 40px;
-      -webkit-mask-image: linear-gradient(to bottom right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%);
-      mask-image: linear-gradient(to bottom right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .landing {
-      position: relative;
-      z-index: 1;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 2rem;
-    }
-    @media (min-width: 768px) { .landing { padding: 4rem; } }
-
-    nav { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center;
-      width: 100%;
-    }
-    
-    .logo-container svg {
-      height: 65px; 
-      width: auto;
-      display: block;
-    }
-
-    nav button {
-      font-family: inherit;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #6b7280;
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: color 0.15s;
-    }
-    nav button:hover { color: #000; }
-
-    main {
-      flex: 1;
+    body {
+      font-family: 'Figtree', sans-serif;
+      background-color: var(--white);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
       text-align: center;
-      max-width: 56rem;
-      margin: 0 auto;
-      padding: 3rem 0;
-      width: 100%;
+    }
+
+    /* Header & Logo */
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'League Spartan', sans-serif;
+      font-size: 24px;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Main Hero Section */
+    .hero {
+      max-width: 600px;
+      padding: 20px;
     }
 
     h1 {
-      font-size: clamp(2.8rem, 10vw, 4.5rem);
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      color: #1e293b;
+      font-size: 2.5rem;
+      font-weight: 800;
       margin-bottom: 1rem;
-      line-height: 1.1;
+      color: var(--text-dark);
     }
 
-    .subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: #4b5563;
+    p.tagline {
+      font-size: 1.1rem;
+      color: var(--text-light);
       margin-bottom: 2.5rem;
     }
 
-    .cta-link {
-      display: inline-block;
-      background: #0d9488;
-      color: #fff;
-      text-decoration: none;
-      padding: 1rem 2rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 10px 20px -4px rgba(13,148,136,0.25);
-      text-align: center;
-      transition: background 0.15s, transform 0.15s;
-    }
-    .cta-link:hover { background: #0f766e; transform: translateY(-2px); }
-    .cta-link:active { transform: translateY(0); }
-    .cta-main { display: block; font-size: 1rem; font-weight: 600; }
-    .cta-sub  { display: block; font-size: 0.625rem; opacity: 0.8; font-weight: 300; margin-top: 0.2rem; }
-
-    .footer-wrap { width: 100%; display: flex; flex-direction: column; gap: 1.5rem; }
-    footer { max-width: 72rem; margin: 0 auto; width: 100%; }
-    .footer-inner { border-top: 1px solid #f3f4f6; padding-top: 1.8rem; }
-    .footer-label {
-      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.1em; color: #9ca3af; margin-bottom: 1rem;
-    }
-    .footer-links {
-      display: flex; flex-direction: row;
-      align-items: center; justify-content: space-between;
-      width: 100%; gap: 1rem;
-      overflow-x: auto; padding-bottom: 0.5rem;
-      scrollbar-width: none; -ms-overflow-style: none;
-    }
-    .footer-links::-webkit-scrollbar { display: none; }
-    .footer-links button {
-      font-family: inherit; font-size: 0.6875rem;
-      color: #6b7280; background: none; border: none;
-      cursor: pointer; white-space: nowrap; padding: 0;
-      transition: color 0.15s;
-    }
-    @media (min-width: 768px) { .footer-links button { font-size: 0.875rem; } }
-    .footer-links button:hover { color: #000; text-decoration: underline; }
-
-    .feedback-wrap { display: flex; justify-content: center; padding-bottom: 0.5rem; }
-    .feedback-btn {
-      font-family: inherit; font-size: 0.6rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.2em;
-      color: #9ca3af; background: none; border: none; cursor: pointer;
-      transition: color 0.15s;
-      text-decoration: none;
-    }
-    .feedback-btn:hover { color: #0d9488; }
-
-    .coming-soon {
-      display: none;
-      position: fixed; inset: 0;
-      background: #ffffff;
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-    .coming-soon.active { display: flex; }
-
-    .back-btn {
-      position: absolute; top: 2rem; left: 2rem;
-      font-family: inherit; font-size: 0.875rem;
-      color: #6b7280; background: none; border: none;
-      cursor: pointer; transition: color 0.15s;
-    }
-    .back-btn:hover { color: #000; }
-
-    .typewriter-wrap {
+    /* Buttons Group */
+    .button-group-vertical {
       display: flex;
+      flex-direction: column;
+      gap: 15px;
       align-items: center;
-      font-size: clamp(1.875rem, 8vw, 3rem);
+    }
+
+    .button-group-horizontal {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Button Styles */
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
       font-weight: 700;
-      color: #1e293b;
-      white-space: nowrap;
-    }
-
-    .cursor-bar {
+      font-family: 'Figtree', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
       display: inline-block;
-      width: 3px;
-      height: 1em;
-      background: #1e293b;
-      margin-left: 4px;
-      vertical-align: text-bottom;
+      font-size: 16px;
+      border: none;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%        { opacity: 0; }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      width: 100%;
+      max-width: 320px;
+    }
+    .btn-primary:hover { background-color: var(--primary-hover); }
+
+    .btn-ghost {
+      background-color: var(--secondary);
+      color: var(--text-dark);
+      border: 1px solid transparent;
+    }
+    .btn-ghost:hover {
+      background-color: #d9f2e9;
+      border-color: var(--primary);
+    }
+
+    /* Pop-up Overlay & Content */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .popup-content {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 90%;
+      width: 380px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+
+    .popup-overlay.show .popup-content { transform: translateY(0); }
+
+    .popup-qr {
+      width: 180px;
+      height: 180px;
+      margin: 20px auto;
+      display: block;
+      cursor: pointer;
+      border: 1px solid #eee;
+      border-radius: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      .button-group-horizontal { flex-direction: column; width: 100%; align-items: center; }
+      .btn-ghost { width: 100%; max-width: 320px; }
     }
   </style>
 </head>
 <body>
 
-<div class="page">
-  <div class="grid-bg"></div>
+  <header>
+    <a href="#" class="logo">
+      <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="20" fill="#0D9488"/>
+        <path d="M30 50L70 50" stroke="#FFD700" stroke-width="8" stroke-linecap="round"/>
+        <path d="M30 35L70 35" stroke="white" stroke-width="8" stroke-linecap="round"/>
+        <path d="M30 65L70 65" stroke="white" stroke-width="8" stroke-linecap="round"/>
+      </svg>
+      Setara Belajar
+    </a>
+  </header>
 
-  <div class="landing">
-    <nav>
-      <div class="logo-container">
-        <svg width="240" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="35" font-family="'League Spartan', sans-serif" font-weight="900" font-size="34" fill="#3D4A5E">setara</text>
-          <text x="0" y="72" font-family="'League Spartan', sans-serif" font-weight="900" font-size="34" fill="#3D4A5E">belajar</text>
-          
-          <rect x="110" y="5" width="55" height="18" rx="4" fill="#0D9488" />
-          <rect x="120" y="28" width="45" height="18" rx="4" fill="#FACC15" />
-        </svg>
+  <main class="hero">
+    <h1>Bikin Modul Ajar Jadi Lebih Praktis</h1>
+    <p class="tagline">Asisten AI yang membantu Bapak/Ibu guru menyusun Modul Ajar Kurikulum Merdeka dalam hitungan detik.</p>
+
+    <div class="button-group-vertical">
+      <button id="startBtn" class="btn btn-primary">Mulai Buat Modul Ajar</button>
+
+      <div class="button-group-horizontal">
+        <button id="mainFeedbackBtn" class="btn btn-ghost">Berikan masukan</button>
+        <button id="mainDonateBtn" class="btn btn-ghost">Donasi</button>
       </div>
-      <button onclick="alert('Fitur riwayat akan segera hadir!')">Dokumen Saya</button>
-    </nav>
+    </div>
+  </main>
 
-    <main>
-      <h1>Cukup Mengajar</h1>
-      <p class="subtitle">Biar kami yang menyelesaikan tugas administrasi Anda.</p>
-      <a href="https://setara-belajar-separate-db.pages.dev/" class="cta-link">
-        <span class="cta-main">Mulai buat modul ajar</span>
-        <span class="cta-sub">Disesuaikan dengan kurikulum yang berlaku</span>
-      </a>
-    </main>
+  <div id="popup-donation" class="popup-overlay">
+    <div class="popup-content">
+      <h2 style="color:var(--primary); margin-top:0;">Aplikasi ini gratis!</h2>
+      <p>Dukung keberlanjutan Setara Belajar dengan donasi sukarela.</p>
+      <img src="https://saweria.co/setarabelajar/qr" alt="Donasi QR" class="popup-qr" id="donateQR1">
+      <p style="font-size: 12px; color: var(--text-light);">Klik QR untuk buka Saweria</p>
+      <button id="continueBtn" class="btn btn-primary" style="margin-top:10px;">Lanjut ke Generator</button>
+    </div>
+  </div>
 
-    <div class="footer-wrap">
-      <footer>
-        <div class="footer-inner">
-          <p class="footer-label">Alat lainnya - Segera hadir</p>
-          <div class="footer-links">
-            <button onclick="showComingSoon()">Pembuat Materi</button>
-            <button onclick="showComingSoon()">Pembuat Rubrik Penilaian</button>
-            <button onclick="showComingSoon()">Pelacak Kemajuan Siswa</button>
-            <button onclick="showComingSoon()">Log Komunikasi Orang Tua</button>
-            <button onclick="showComingSoon()">Akreditasi</button>
-          </div>
-        </div>
-      </footer>
-      <div class="feedback-wrap">
-         <a href="https://forms.gle/9YR8ebEK7LCqeDxV6" target="_blank" rel="noopener noreferrer" class="feedback-btn">
-            Berikan Masukan
-        </a>
+  <div id="popup-thankyou" class="popup-overlay">
+    <div class="popup-content">
+      <h2 style="color:var(--primary); margin-top:0;">Terima Kasih!</h2>
+      <p>Modul Anda sedang disiapkan. Masukan Anda sangat berarti bagi kami.</p>
+      <img src="https://saweria.co/setarabelajar/qr" alt="Donasi QR" class="popup-qr" id="donateQR2">
+      <div class="button-group-vertical" style="margin-top:20px;">
+        <button id="downloadModulBtn" class="btn btn-primary">Download Modul + LKPD</button>
+        <button id="feedbackFormBtn" class="btn btn-ghost">Berikan Feedback</button>
       </div>
     </div>
   </div>
 
-  <div class="coming-soon" id="comingSoon">
-    <button class="back-btn" onclick="hideComingSoon()">← Kembali</button>
-    <div class="typewriter-wrap">
-      <span id="typingText"></span><span class="cursor-bar" id="cursorBar"></span>
-    </div>
-  </div>
-</div>
+  <script>
+    const APP_URL = "https://setara-belajar-separate-db.pages.dev/";
+    const SAWERIA_URL = "https://saweria.co/setarabelajar";
+    const FEEDBACK_URL = "https://forms.gle/yEnNmxGWtAfqYdgXA";
 
-<script>
-  var typingInterval = null;
+    // Utility
+    function showPopup(id) { document.getElementById(id).classList.add('show'); }
+    function hidePopup(id) { document.getElementById(id).classList.remove('show'); }
 
-  function showComingSoon() {
-    document.getElementById('comingSoon').classList.add('active');
-    startTypewriter();
-  }
+    // --- LOGIKA TOMBOL UTAMA ---
 
-  function hideComingSoon() {
-    document.getElementById('comingSoon').classList.remove('active');
-    if (typingInterval) { clearInterval(typingInterval); typingInterval = null; }
-    document.getElementById('typingText').textContent = '';
-    var cur = document.getElementById('cursorBar');
-    cur.style.animation = '';
-    cur.style.opacity = '1';
-  }
-
-  function startTypewriter() {
-    var el  = document.getElementById('typingText');
-    var cur = document.getElementById('cursorBar');
-    var text = 'Sedang dibuat...';
-    var i = 0;
-    el.textContent = '';
-    cur.style.animation = 'blink 0.8s step-end infinite';
-
-    if (typingInterval) clearInterval(typingInterval);
-
-    typingInterval = setInterval(function () {
-      el.textContent += text.charAt(i);
-      i++;
-      if (i >= text.length) {
-        clearInterval(typingInterval);
-        typingInterval = null;
-        setTimeout(function () {
-          cur.style.animation = 'none';
-          cur.style.opacity = '0';
-        }, 600);
+    document.getElementById('startBtn').addEventListener('click', function() {
+      if(!sessionStorage.getItem('firstPopupShown')) {
+        showPopup('popup-donation');
+        sessionStorage.setItem('firstPopupShown', 'true');
+      } else {
+        window.location.href = APP_URL;
       }
-    }, 80);
-  }
-</script>
+    });
 
+    document.getElementById('mainFeedbackBtn').addEventListener('click', () => window.open(FEEDBACK_URL, '_blank'));
+    document.getElementById('mainDonateBtn').addEventListener('click', () => window.open(SAWERIA_URL, '_blank'));
+
+    // --- LOGIKA POP-UP 1 (Donation) ---
+
+    document.getElementById('continueBtn').addEventListener('click', () => {
+      hidePopup('popup-donation');
+      window.location.href = APP_URL;
+    });
+
+    document.getElementById('donateQR1').addEventListener('click', () => window.open(SAWERIA_URL, '_blank'));
+
+    // --- LOGIKA POP-UP 2 (Thank You) ---
+    // Fungsi ini dipanggil setelah proses generate modul selesai di aplikasi utama
+    // Untuk demo, tombol download di pop-up mensimulasikan penyelesaian
+    
+    document.getElementById('donateQR2').addEventListener('click', () => window.open(SAWERIA_URL, '_blank'));
+
+    document.getElementById('downloadModulBtn').addEventListener('click', function() {
+      alert('Mengunduh Modul Ajar...');
+      hidePopup('popup-thankyou');
+    });
+
+    document.getElementById('feedbackFormBtn').addEventListener('click', () => window.open(FEEDBACK_URL, '_blank'));
+
+    // Opsional: Trigger pop-up terima kasih jika ada parameter sukses (misal balik dari app)
+    // triggerThankYouPopup(); 
+  </script>
 </body>
 </html>
